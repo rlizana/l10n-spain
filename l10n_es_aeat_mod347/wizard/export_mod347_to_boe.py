@@ -18,7 +18,8 @@
 from openerp.osv import orm, fields
 from openerp.tools.translate import _
 
-class l10n_es_aeat_mod347_export_to_boe(orm.TransientModel):
+
+class L10nEsAeatMod347ExportToBoe(orm.TransientModel):
     _inherit = "l10n.es.aeat.report.export_to_boe"
     _name = "l10n.es.aeat.mod347.export_to_boe"
 
@@ -91,8 +92,8 @@ class l10n_es_aeat_mod347_export_to_boe(orm.TransientModel):
         # Sello electrónico
         text += 13 * ' '
         text += '\r\n'
-        assert len(text) == 502, _(
-                    "The type 1 record must be 502 characters long")
+        assert len(text) == 502, (
+            _("The type 1 record must be 502 characters long"))
         return text
 
     def _get_formated_partner_record(self, report, partner_record):
@@ -109,7 +110,8 @@ class l10n_es_aeat_mod347_export_to_boe(orm.TransientModel):
             9-17 	    NIF del declarante
             18-26 	    NIF del declarado
             27-35 	    NIF del representante legal
-            36-75 	    Apellidos y nombre, razón social o denominación del declarado
+            36-75 	    Apellidos y nombre, razón social o denominación del
+                            declarado
             76          Tipo de hoja
             77-80 	    Código provincia/país
             81          Blancos
@@ -118,16 +120,21 @@ class l10n_es_aeat_mod347_export_to_boe(orm.TransientModel):
             98          Operación de seguro
             99          Arrendamiento local negocio
             100-114 	Importe percibido en metálico
-            115-129 	Importe percibido por transmisiones de inmuebles sujetas a IVA
+            115-129 	Importe percibido por transmisiones de inmuebles sujetas
+                            a IVA
             130-134     Año de devengo de las operaciones en efectivo
             135-151     Importe de las operaciones del primer trimestre
-            151-167     Importe percibido por transmisiones de inmuebles sujates a Iva Primer Trimestre
+            151-167     Importe percibido por transmisiones de inmuebles sujetas
+                            a Iva Primer Trimestre
             168-183     Importe de las operaciones del Segundo trimestre
-            183-199     Importe percibido por transmisiones de inmuebles sujates a Iva segundo Trimestre
+            183-199     Importe percibido por transmisiones de inmuebles sujetas
+                            a Iva segundo Trimestre
             200-215     Importe de las operaciones del tercer trimestre
-            215-231     Importe percibido por transmisiones de inmuebles sujates a Iva tercer Trimestre
+            215-231     Importe percibido por transmisiones de inmuebles sujetas
+                            a Iva tercer Trimestre
             231-247     Importe de las operaciones del quarto trimestre
-            247-263     Importe percibido por transmisiones de inmuebles sujates a Iva quarto Trimestre
+            247-263     Importe percibido por transmisiones de inmuebles sujetas
+                            a Iva quarto Trimestre
             264-500 	Blancos
             488-500 	Sello electrónico
         """
@@ -163,31 +170,45 @@ class l10n_es_aeat_mod347_export_to_boe(orm.TransientModel):
         # Importe percibido en metálico
         text += self._formatNumber(partner_record.cash_amount, 13, 2)
         # Importe percibido por transmisiones de inmuebles sujetas a IVA
-        text += self._formatNumber(partner_record.real_state_transmissions_amount, 13, 2, True)
+        text += self._formatNumber(
+            partner_record.real_state_transmissions_amount, 13, 2, True)
         # Año de devengo de las operaciones en efectivo
-        text += partner_record.origin_fiscalyear_id and self._formatString(partner_record.origin_fiscalyear_id.code, 4) or 4*'0'
+        text += partner_record.origin_fiscalyear_id and self._formatString(
+            partner_record.origin_fiscalyear_id.code, 4) or 4 * '0'
         # Importe de las operaciones del primer trimestre
         text += self._formatNumber(partner_record.first_quarter, 13, 2, True)
-        # Importe percibido por transmisiones de inmuebles sujates a Iva Primer Trimestre
-        text += self._formatNumber(partner_record.first_quarter_real_state_transmission_amount, 13, 2, True)
+        # Importe percibido por transmisiones de inmuebles sujetas
+        # a Iva Primer Trimestre
+        text += self._formatNumber(
+            partner_record.first_quarter_real_state_transmission_amount, 13,
+            2, True)
         # Importe de las operaciones del segundo trimestre
         text += self._formatNumber(partner_record.second_quarter, 13, 2, True)
-        # Importe percibido por transmisiones de inmuebles sujates a Iva Segundo Trimestre
-        text += self._formatNumber(partner_record.second_quarter_real_state_transmission_amount, 13, 2, True)
+        # Importe percibido por transmisiones de inmuebles sujetas
+        # a Iva Segundo Trimestre
+        text += self._formatNumber(
+            partner_record.second_quarter_real_state_transmission_amount, 13,
+            2, True)
         # Importe de las operaciones del tercer trimestre
         text += self._formatNumber(partner_record.third_quarter, 13, 2, True)
-        # Importe percibido por transmisiones de inmuebles sujates a Iva Tercer Trimestre
-        text += self._formatNumber(partner_record.third_quarter_real_state_transmission_amount, 13, 2, True)
+        # Importe percibido por transmisiones de inmuebles sujetas
+        # a Iva Tercer Trimestre
+        text += self._formatNumber(
+            partner_record.third_quarter_real_state_transmission_amount, 13,
+            2, True)
         # Importe de las operaciones del cuarto trimestre
         text += self._formatNumber(partner_record.fourth_quarter, 13, 2, True)
-        # Importe percibido por transmisiones de inmuebles sujates a Iva Cuarto Trimestre
-        text += self._formatNumber(partner_record.fourth_quarter_real_state_transmission_amount, 13, 2, True)        
+        # Importe percibido por transmisiones de inmuebles sujetas
+        # a Iva Cuarto Trimestre
+        text += self._formatNumber(
+            partner_record.fourth_quarter_real_state_transmission_amount, 13,
+            2, True)
         # Blancos
         text += 237 * ' '
         # Sello electrónico
         text += '\r\n'
-        assert len(text) == 502, _(
-                "The type 2-D record (partner) must be 502 characters long")
+        assert len(text) == 502, (
+            _("The type 2-D record (partner) must be 502 characters long"))
         return text
 
     def _get_formated_real_state_record(self, report, partner_record):
@@ -203,7 +224,8 @@ class l10n_es_aeat_mod347_export_to_boe(orm.TransientModel):
             9-17       NIF del declarante
             18-26      NIF del arrendatario
             27-35      NIF del representante legal
-            36-75      Apellidos y nombre, razón social o denominación del declarado
+            36-75      Apellidos y nombre, razón social o denominación
+                           del declarado
             76         Tipo de hoja
             77-99 	   Blancos
             100-114    Importe de la operación
@@ -289,8 +311,8 @@ class l10n_es_aeat_mod347_export_to_boe(orm.TransientModel):
         text += 167 * ' '
         # Sello electrónico
         text += '\r\n'
-        assert len(text) == 502, _(
-                "The type 2-I record (real state) must be 502 characters long")
+        assert len(text) == 502, (
+            _("The type 2-I record (real state) must be 502 characters long"))
         return text
 
     def _get_formatted_main_record(self, cr, uid, report, context=None):

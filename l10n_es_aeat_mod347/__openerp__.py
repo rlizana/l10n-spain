@@ -42,10 +42,12 @@ Presentación del Modelo AEAT 347
 ================================
 
 (Declaración Anual de Operaciones con Terceros)
-Basado en la Orden EHA/3012/2008, de 20 de Octubre, por el que se aprueban los diseños físicos y lógicos del 347.
+Basado en la Orden EHA/3012/2008, de 20 de Octubre, por el que se aprueban los
+diseños físicos y lógicos del 347.
 
-De acuerdo con la normativa de la Hacienda Española, están obligados a presentar el modelo 347:
------------------------------------------------------------------------------------------------
+De acuerdo con la normativa de la Hacienda Española, están obligados a presentar
+el modelo 347:
+--------------------------------------------------------------------------------
 * Todas aquellas personas físicas o jurídicas que no esten acogidas al regimen
   de módulos en el IRPF, de naturaleza pública o privada que desarrollen
   actividades empresariales o profesionales, siempre y cuando hayan realizado
@@ -94,16 +96,15 @@ https://launchpad.net/account-financial-tools
         "account_invoice_currency",
     ],
     'data': [
-         "account_period_view.xml",
-         "res_partner_view.xml",
-         "wizard/export_mod347_to_boe.xml",
-         "report/mod347_report.xml",
-         "security/ir.model.access.csv",
-         "security/mod_347_security.xml",
-         "mod347_view.xml",
+        "account_period_view.xml",
+        "res_partner_view.xml",
+        "wizard/export_mod347_to_boe.xml",
+        "report/mod347_report.xml",
+        "security/ir.model.access.csv",
+        "security/mod_347_security.xml",
+        "mod347_view.xml",
     ],
     'installable': True,
-    'active': False,
     'images': [
         'images/l10n_es_aeat_mod347.png',
     ],

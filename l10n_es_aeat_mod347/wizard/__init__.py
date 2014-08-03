@@ -18,6 +18,6 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-import export_mod347_to_boe
+from . import export_mod347_to_boe
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
